@@ -14,3 +14,11 @@ curl 'https://stream01.willfonk.com/live_playlist.m3u8?cid=BS296&r=FHD&ccode=JP&
   --compressed
 
 ffmpeg -i "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS296&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1" -c copy -bsf:a aac_adtstoasc output.mp4
+
+yt-dlp "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS296&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
+
+yt-dlp "https://hls083.vipdracdn.net/streamhls2024/f89a76c7067505e25320415e0072de59/ep.2.v0.1707367415.720.m3u8"
+auto_subtitle improper2.mp4 -o improper2_en --language ja --output_srt
+
+yt-dlp "https://hls084.vipdracdn.net/streamhls2024/f89a76c7067505e25320415e0072de59/ep.3.v0.1707641216.720.m3u8" -o ep3.mp4
+auto_subtitle ep3.mp4 -o ep3_.srt --language ja --output_srt true --output_dir . --srt_only true

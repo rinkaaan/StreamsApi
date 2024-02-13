@@ -76,9 +76,10 @@ weekly_schedule = {
 }
 
 
-def start_recording(output_filename):
+def start_recording():
     global recording_process
-    command = f'ffmpeg -i "{stream_url}" -c copy -bsf:a aac_adtstoasc "{output_filename}.mp4"'
+    global output_filename
+    command = f'ffmpeg -i "{stream_url}" -c copy -bsf:a aac_adtstoasc "{output_filename}"'
     recording_process = subprocess.Popen(command, shell=True, preexec_fn=os.setsid)
     print(f"Recording started for {output_filename}")
 
@@ -89,11 +90,18 @@ def stop_recording():
         # Send SIGINT to the process group to gracefully stop yt-dlp
         os.killpg(os.getpgid(recording_process.pid), signal.SIGINT)
         print("SIGINT signal sent to stop recording.")
+
+        time.sleep(5)
+
+        command = f'auto_subtitle "{output_filename}" -o "{output_filename}.srt" --language ja --output_srt true --output_dir . --srt_only true'
+        subprocess.run(command, shell=True)
+        print(f"Subtitles generated for {output_filename}")
     else:
         print("No recording process found.")
 
 
 def do_this():
+    global output_filename
     # Set the timezone to Japan
     japan_timezone = pytz.timezone('Asia/Tokyo')
 
@@ -116,10 +124,10 @@ def do_this():
                 # end_time = end_time + timedelta(minutes=2)
                 end_time = end_time.strftime('%H:%M') + ':00'
 
-            output_filename = f'{channel} {show} {japan_time.strftime("%b %d").lower()}'
+            output_filename = f'{channel} {show} {japan_time.strftime("%b %d").lower()}.mp4'
 
             if current_time == start_time:
-                start_recording(output_filename)
+                start_recording()
             if current_time == end_time:
                 stop_recording()
 

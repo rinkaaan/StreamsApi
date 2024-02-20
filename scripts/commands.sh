@@ -27,6 +27,8 @@ mpga
 
 ffmpeg -http_persistent 1 -reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 60 -i "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS296&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1" -c copy -bsf:a aac_adtstoasc "tbs feb 15.mp4"
 
+ffmpeg -http_persistent 1 -reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 60 -t 5 -i "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS296&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1" -c copy -bsf:a aac_adtstoasc "tbs.mp4"
+
 yt-dlp "https://stream01.willfonk.com/live_playlist.m3u8?cid=BS296&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1"
 
 # This is the one!

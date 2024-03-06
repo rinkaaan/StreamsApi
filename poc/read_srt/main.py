@@ -36,10 +36,10 @@ def parse_srt(srt_file_path):
 
 
 # Example usage
-srt_file_path = 'ep3.srt'
+srt_file_path = 'tbs mar 05 14 59 58.srt'
 subtitles = parse_srt(srt_file_path)
 # for subtitle in subtitles:
 #     print(subtitle)
 
-with open('ep3.json', 'w', encoding='utf-8') as file:
+with open('tbs mar 05 14 59 58.json', 'w', encoding='utf-8') as file:
     json.dump(subtitles, file, ensure_ascii=False, indent=4)

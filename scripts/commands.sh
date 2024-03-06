@@ -56,3 +56,6 @@ auto_subtitle 'tbs news feb 14.mp4' -o 'tbs news feb 14.srt' --language ja --out
 auto_subtitle 'tbs nstar feb 13.mp4' -o 'tbs nstar feb 13.srt' --language ja --output_srt true --output_dir . --srt_only true
 auto_subtitle 'tbs the time 1 feb 14.mp4' -o 'tbs the time 1 feb 14.srt' --language ja --output_srt true --output_dir . --srt_only true
 auto_subtitle 'tbs the time 2 feb 14.mp4' -o 'tbs the time 2 feb 14.srt' --language ja --output_srt true --output_dir . --srt_only true
+auto_subtitle 'tbs mar 05 14 59 58.mp4' -o 'tbs mar 05 14 59 58.srt' --language ja --output_srt true --output_dir . --srt_only true
+
+ffmpeg -i "tbs mar 05 14 59 58.mp4" "tbs mar 05 14 59 58.mp3"
